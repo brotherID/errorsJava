@@ -1,0 +1,22 @@
+Pour résoudre cette erreur après avoir fait un maven install :
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project ControlProvision: Compilation failure
+[ERROR] /D:/workspaceControlProvision/ControlProvision/src/main/java/dev/procheck/control/provision/dao/ConnectionManager.java:[46,21] try-with-resources is not supported in -source 1.5
+[ERROR]   (use -source 7 or higher to enable try-with-resources)
+[ERROR] -> [Help 1]  
+
+Solution :
+Vous pouvez le faire en modifiant le fichier pom.xml, en ajoutant ces éléments à la section <build> :
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.1</version>
+      <configuration>
+        <source>1.7</source>
+        <target>1.7</target>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
